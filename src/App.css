@@ -1,4 +1,13 @@
 .App {
   margin: 0;
-  background-color: #1d1c1c;
+  background-color: #ffffff;
+  height: 100%;
+  width: 100%;
+}
+.header {
+  background-color: #003054;
+  height: 120px;
+}
+.header__label--for-input {
+  color: #ffffff;
 }
