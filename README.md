@@ -1,7 +1,17 @@
-## Debtor app [DEMO]()
+## Debtor app 
+[DEMO](https://debtors-dbednarek.netlify.app/) - not working atm, troubleshooting
 
 An app that collects debtors' data and displays it.
-It contains a search input to look for debtors.
+It contains a search input to filter debtors.
+
+Tools used:
+- React.js with npx create-react-app and hooks
+- [react-bootstrap](https://react-bootstrap.github.io/)
+- LESS
+- ES6+
+- REST API
+
+
 
 ### `npm start`
 
