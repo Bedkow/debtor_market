@@ -6,12 +6,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
+import Spinner from 'react-bootstrap/Spinner';
 
 function App() {
 	const [query, setQuery] = useState('');
 	const [totalNumberOfDebtors, setTotalNumberOfDebtors] = useState('');
 	const [debtors, setDebtors] = useState([]);
-
+	const [isPending, setIsPending] = useState(false);
+	const [failureMessage, setFailureMessage] = useState();
 	// display total numbers of debtors
 	useEffect(() => {
 		fetch(
@@ -34,16 +36,20 @@ function App() {
 			.catch((error) => console.log(error));
 	}, []);
 
-	// @@@ DEV
-	useEffect(() => {
+	// get filtered list
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		setIsPending(true);
+
 		fetch(
 			`http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetFilteredDebts`,
 			{
 				method: 'POST',
 				body: JSON.stringify({
-					Name: 'DI/KOSZT/P/94911', // just change all for {query} or smth
-					NIP: 'DI/KOSZT/P/94911',
-					Number: 'DI/KOSZT/P/94911',
+					Name: query,
+					NIP: query,
+					Number: query,
 				}),
 				headers: {
 					'Content-type': 'application/json',
@@ -52,14 +58,17 @@ function App() {
 		)
 			.then((res) => res.json())
 			.then((response) => {
-				console.log(response);
+				if (response.length === 0) {
+					setFailureMessage('NIE ZNALEZIONO');
+					setIsPending(false);
+					setDebtors(response);
+				} else {
+					setFailureMessage();
+					setDebtors(response);
+					setIsPending(false);
+				}
 			})
 			.catch((error) => console.log(error));
-	}, []);
-	/// @@@@
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
 	};
 
 	return (
@@ -67,7 +76,7 @@ function App() {
 			<header className='header'>
 				<Container fluid>
 					<Row>
-						<Col>
+						<Col sm={8} xs={12}>
 							<form onSubmit={handleSubmit}>
 								<Stack>
 									<label className='header__form__label--for-input'>
@@ -83,14 +92,22 @@ function App() {
 											minLength='3'
 											maxLength='256'
 										/>
-										<button className='header__form__button--search'>
-											Szukaj
-										</button>
+										{!isPending && (
+											<button className='header__form__button--search'>
+												Szukaj
+											</button>
+										)}
+										{isPending && (
+											<button disabled className='header__form__button--search'>
+												<Spinner animation='border' size='sm' />
+												Szukam
+											</button>
+										)}
 									</div>
 								</Stack>
 							</form>
 						</Col>
-						<Col>
+						<Col sm={4} xs={12}>
 							<div className='header__div--block--total-cases'>
 								<Stack>
 									<div className='header__div--text--total-cases'>
@@ -98,6 +115,9 @@ function App() {
 									</div>
 									<div className='header__div--number--total-cases'>
 										{totalNumberOfDebtors}
+									</div>
+									<div className='header__div--text--total-cases-failure'>
+										{failureMessage}
 									</div>
 								</Stack>
 							</div>

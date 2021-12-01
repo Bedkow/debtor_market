@@ -1,24 +1,24 @@
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
 import Stack from 'react-bootstrap/Stack';
 
 function Debtor({ debtor }) {
-	console.log(debtor);
 	return (
 		<Accordion.Item eventKey={debtor.Id} key={debtor.Id}>
 			<Accordion.Header>
-				<Col sm={4} key={debtor.Name}>
+				<Col sm={4} xs={4} key={debtor.Name}>
 					{debtor.Name}
 				</Col>
-				<Col sm={2} key={debtor.NIP}>
+				<Col sm={2} xs={4} key={debtor.NIP}>
 					{debtor.NIP}
 				</Col>
-				<Col sm={6} key={debtor.Value}>
+
+				<Col sm={6} xs={4} key={debtor.Value}>
 					{debtor.Value}
 				</Col>
 			</Accordion.Header>
+
 			<Accordion.Body>
 				<Row>
 					<Col sm={4} key={debtor.Address}>

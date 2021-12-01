@@ -6,7 +6,7 @@
 }
 .header {
   background-color: #003054;
-  height: 120px;
+  height: 150px;
 }
 .header__form__label--for-input {
   color: #ffffff;
@@ -15,7 +15,7 @@
 }
 .header__form__input-text-search {
   border: none;
-  width: 250px;
+  width: 220px;
   height: 30px;
 }
 .header__form__button--search {
@@ -28,6 +28,12 @@
 .header__div--text--total-cases {
   color: #e40524;
   font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+.header__div--text--total-cases-failure {
+  color: #e40524;
+  font-size: 24px;
   font-weight: 700;
   text-align: right;
 }
