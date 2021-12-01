@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import DebtorTable from './components/DebtorTable';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 	const [query, setQuery] = useState('');
 	const [totalNumberOfDebtors, setTotalNumberOfDebtors] = useState('');
+	const [debtors, setDebtors] = useState([]);
 
 	// display total numbers of debtors
 	useEffect(() => {
@@ -18,16 +20,17 @@ function App() {
 			.catch((error) => console.log(error));
 	}, []);
 
-	// @@@@ dev test fetches
+	// set top debtors
 	useEffect(() => {
 		fetch(`http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetTopDebts`)
 			.then((res) => res.json())
 			.then((response) => {
-				console.log(response);
+				setDebtors(response);
 			})
 			.catch((error) => console.log(error));
 	}, []);
 
+	// @@@ DEV
 	useEffect(() => {
 		fetch(
 			`http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetFilteredDebts`,
@@ -50,6 +53,7 @@ function App() {
 			.catch((error) => console.log(error));
 	}, []);
 	/// @@@@
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 	};
@@ -74,7 +78,7 @@ function App() {
 				</form>
 				<div>{totalNumberOfDebtors}</div>
 			</header>
-			<DebtorTable />
+			<DebtorTable debtors={debtors} />
 		</div>
 	);
 }
