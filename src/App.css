@@ -8,6 +8,17 @@
   background-color: #003054;
   height: 120px;
 }
-.header__label--for-input {
+.header__form__label--for-input {
   color: #ffffff;
+}
+.header__form__button--search {
+  background-color: #e40321;
+  color: #ffffff;
+}
+.header__div--text--total-cases {
+  color: #e40524;
+}
+.header__div--number--total-cases {
+  color: #ffffff;
+  font-size: 32px;
 }

@@ -2,6 +2,7 @@ import Debtor from './Debtor';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Accordion from 'react-bootstrap/Accordion';
 
 function DebtorTable(props) {
 	const debtors = props.debtors.map((debtor) => {
@@ -15,7 +16,9 @@ function DebtorTable(props) {
 				<Col sm={2}>NIP</Col>
 				<Col sm={2}>KWOTA ZADŁUŻENIA</Col>
 			</Row>
-			<Container fluid>{debtors}</Container>
+			<Accordion>
+				<Container fluid>{debtors}</Container>
+			</Accordion>
 		</Container>
 	);
 }

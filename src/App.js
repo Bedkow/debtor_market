@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import DebtorTable from './components/DebtorTable';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function App() {
 	const [query, setQuery] = useState('');
@@ -61,22 +64,37 @@ function App() {
 	return (
 		<div className='App'>
 			<header className='header'>
-				<form onSubmit={handleSubmit}>
-					<label className='header__label--for-input'>
-						PODAJ NUMER SPRAWY, NAZWĘ LUB NIP DŁUŻNIKA
-					</label>
-					<input
-						type='text'
-						className='header__input-text-search'
-						value={query}
-						onChange={(e) => setQuery(e.target.value)}
-						required
-						minLength='3'
-						maxLength='256'
-					/>
-					<button>Szukaj</button>
-				</form>
-				<div>{totalNumberOfDebtors}</div>
+				<Container fluid>
+					<Row>
+						<Col>
+							<form onSubmit={handleSubmit}>
+								<label className='header__form__label--for-input'>
+									PODAJ NUMER SPRAWY, NAZWĘ LUB NIP DŁUŻNIKA
+								</label>
+								<input
+									type='text'
+									className='header__form__input-text-search'
+									value={query}
+									onChange={(e) => setQuery(e.target.value)}
+									required
+									minLength='3'
+									maxLength='256'
+								/>
+								<button className='header__form__button--search'>Szukaj</button>
+							</form>
+						</Col>
+						<Col>
+							<div className='header__div--block--total-cases'>
+								<div className='header__div--text--total-cases'>
+									CAŁKOWITA ILOŚĆ SPRAW
+								</div>
+								<div className='header__div--number--total-cases'>
+									{totalNumberOfDebtors}
+								</div>
+							</div>
+						</Col>
+					</Row>
+				</Container>
 			</header>
 			<DebtorTable debtors={debtors} />
 		</div>
