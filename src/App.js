@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Stack from 'react-bootstrap/Stack';
 
 function App() {
 	const [query, setQuery] = useState('');
@@ -68,35 +69,45 @@ function App() {
 					<Row>
 						<Col>
 							<form onSubmit={handleSubmit}>
-								<label className='header__form__label--for-input'>
-									PODAJ NUMER SPRAWY, NAZWĘ LUB NIP DŁUŻNIKA
-								</label>
-								<input
-									type='text'
-									className='header__form__input-text-search'
-									value={query}
-									onChange={(e) => setQuery(e.target.value)}
-									required
-									minLength='3'
-									maxLength='256'
-								/>
-								<button className='header__form__button--search'>Szukaj</button>
+								<Stack>
+									<label className='header__form__label--for-input'>
+										PODAJ NUMER SPRAWY, NAZWĘ LUB NIP DŁUŻNIKA
+									</label>
+									<div>
+										<input
+											type='text'
+											className='header__form__input-text-search'
+											value={query}
+											onChange={(e) => setQuery(e.target.value)}
+											required
+											minLength='3'
+											maxLength='256'
+										/>
+										<button className='header__form__button--search'>
+											Szukaj
+										</button>
+									</div>
+								</Stack>
 							</form>
 						</Col>
 						<Col>
 							<div className='header__div--block--total-cases'>
-								<div className='header__div--text--total-cases'>
-									CAŁKOWITA ILOŚĆ SPRAW
-								</div>
-								<div className='header__div--number--total-cases'>
-									{totalNumberOfDebtors}
-								</div>
+								<Stack>
+									<div className='header__div--text--total-cases'>
+										CAŁKOWITA ILOŚĆ SPRAW
+									</div>
+									<div className='header__div--number--total-cases'>
+										{totalNumberOfDebtors}
+									</div>
+								</Stack>
 							</div>
 						</Col>
 					</Row>
 				</Container>
 			</header>
-			<DebtorTable debtors={debtors} />
+			<Container fluid>
+				<DebtorTable debtors={debtors} />
+			</Container>
 		</div>
 	);
 }

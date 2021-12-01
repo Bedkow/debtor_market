@@ -10,15 +10,40 @@
 }
 .header__form__label--for-input {
   color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+.header__form__input-text-search {
+  border: none;
+  width: 250px;
+  height: 30px;
 }
 .header__form__button--search {
   background-color: #e40321;
   color: #ffffff;
+  width: 100px;
+  height: 30px;
+  border: none;
 }
 .header__div--text--total-cases {
   color: #e40524;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
 }
 .header__div--number--total-cases {
   color: #ffffff;
   font-size: 32px;
+  font-weight: 700;
+  text-align: right;
+}
+.DebtorTable__Debtor__Accordion__Body__Row__Col__Stack--title {
+  color: #433b39;
+  font-size: 10px;
+  font-weight: 700;
+}
+.DebtorTable__table--header {
+  color: #d3d5d4;
+  font-size: 12px;
+  font-weight: 700;
 }

@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 
 function DebtorTable(props) {
 	const debtors = props.debtors.map((debtor) => {
@@ -10,16 +11,18 @@ function DebtorTable(props) {
 	});
 
 	return (
-		<Container fluid>
-			<Row>
-				<Col sm={4}>DŁUŻNIK</Col>
-				<Col sm={2}>NIP</Col>
-				<Col sm={2}>KWOTA ZADŁUŻENIA</Col>
-			</Row>
-			<Accordion>
-				<Container fluid>{debtors}</Container>
-			</Accordion>
-		</Container>
+		<>
+			<Card body>
+				<div className='DebtorTable__table--header'>
+					<Row>
+						<Col sm={4}>DŁUŻNIK</Col>
+						<Col sm={2}>NIP</Col>
+						<Col sm={6}>KWOTA ZADŁUŻENIA</Col>
+					</Row>
+				</div>
+			</Card>
+			<Accordion>{debtors}</Accordion>
+		</>
 	);
 }
 
