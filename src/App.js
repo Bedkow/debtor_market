@@ -17,7 +17,7 @@ function App() {
 	// display total numbers of debtors
 	useEffect(() => {
 		fetch(
-			`	http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetDebtsCount`
+			`http://rekrutacja-webhosting.it.krd.pl/api/Recruitment/GetDebtsCount`
 		)
 			.then((res) => res.json())
 			.then((response) => {
