@@ -11,6 +11,8 @@ Tools used:
 - ES6+
 - REST API
 
+### ***Important***:
+The API used for the project uses http instead of https. As a result it gets blocked by browsers. To overcome it, for the sake of presentation, I hardcoded the JSON data from the API in separate JSON files.
 
 
 ### `npm start`
